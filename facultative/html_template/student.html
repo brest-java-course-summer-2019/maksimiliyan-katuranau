@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800">
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
+    <title>Edit Employee</title>
+</head>
+<body>
+
+<header>
+    <nav id="main-header"
+         class="py-1 mb-3 navbar navbar-expand-sm navbar-light bg-light text-dark">
+        <ul class="navbar-nav float-lg-left">
+            <li class="nav-item"><a href="students.html"
+                                    class="nav-item nav-link"
+                                    title="Back to list"
+                                    data-toggle="tooltip"
+                                    data-placement="bottom">STUDENTS</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="students.html"
+                                    class="btn btn-light"
+                                    title="Save student"
+                                    data-toggle="tooltip"
+                                    data-placement="bottom">
+                <i class="fa fa-save"></i> <span class="d-none d-sm-inline">Save</span></a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="employee">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-control-label"
+                                       for="field_student_first_name">First name</label>
+                                <input class="form-control"
+                                       id="field_student_first_name"
+                                       type="text"
+                                       value="Philip"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label"
+                                       for="field_student_last_name">Last name</label>
+                                <input class="form-control"
+                                       id="field_student_last_name"
+                                       type="text"
+                                       value="Kontsevich"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label"
+                                       for="field_age">Age</label>
+                                <input class="form-control"
+                                       id="field_age"
+                                       type="text"
+                                       value="19"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label"
+                                       for="field_courses">Courses</label><br>
+                                <select class="selectpicker" id="field_courses" multiple data-live-search="true">
+                                    <option value="1">Dance</option>
+                                    <option value="2" selected>Box</option>
+                                    <option value="3" selected>Sing</option>
+                                    <option value="4">Art</option>
+                                    <option value="5" selected>Race</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <hr/>
+    <p class="text-center">&copy; 2019</p>
+</footer>
+
+<script>
+    $('select').selectpicker();
+</script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+</body>
+</html>
