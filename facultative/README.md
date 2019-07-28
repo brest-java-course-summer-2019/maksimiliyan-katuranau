@@ -1,4 +1,6 @@
 # Facultative Application
+[![Build Status](https://travis-ci.org/brest-java-course-summer-2019/maksimiliyan-katuranau.svg?branch=master)](https://travis-ci.org/brest-java-course-summer-2019/maksimiliyan-katuranau)
+[![Coverage Status](https://coveralls.io/repos/github/brest-java-course-summer-2019/maksimiliyan-katuranau/badge.svg)](https://coveralls.io/github/brest-java-course-summer-2019/maksimiliyan-katuranau)
 
   Demo project for facultative management with two entities: “Course” and “Student”, related as one to many.
     

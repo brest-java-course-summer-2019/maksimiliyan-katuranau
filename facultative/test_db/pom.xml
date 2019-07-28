@@ -11,7 +11,7 @@
     <parent>
         <groupId>com.epam.summer.courses</groupId>
         <artifactId>facultative</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
 

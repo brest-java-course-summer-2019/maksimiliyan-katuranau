@@ -48,7 +48,7 @@ public class StudentDaoJdbcImpl implements StudentDao {
      */
     @Autowired
     public StudentDaoJdbcImpl(final NamedParameterJdbcTemplate namedParameterJdbcTemplate,
-                             final StudentMapper courseMapper, final StudentHasCoursesDao studentHasCoursesDao) {
+                              final StudentMapper courseMapper, final StudentHasCoursesDao studentHasCoursesDao) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
         this.studentMapper = courseMapper;
         this.studentHasCoursesDao = studentHasCoursesDao;

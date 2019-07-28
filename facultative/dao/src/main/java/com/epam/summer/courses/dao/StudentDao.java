@@ -3,7 +3,6 @@ package com.epam.summer.courses.dao;
 import com.epam.summer.courses.model.Student;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * The interface Student dao.

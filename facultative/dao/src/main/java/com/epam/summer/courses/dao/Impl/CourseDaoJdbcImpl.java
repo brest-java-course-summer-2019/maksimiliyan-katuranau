@@ -60,7 +60,7 @@ public class CourseDaoJdbcImpl implements CourseDao {
                 .addValue("courseName", course.getCourseName())
                 .addValue("teacher", course.getTeacher());
         KeyHolder generatedKeyHolder = new GeneratedKeyHolder();
-        namedParameterJdbcTemplate.update(COURSE_ADD_SQL, parameters, generatedKeyHolder, new String[] { "course_id" });
+        namedParameterJdbcTemplate.update(COURSE_ADD_SQL, parameters, generatedKeyHolder, new String[]{"course_id"});
         course.setCourseId(generatedKeyHolder.getKey().intValue());
         return course;
     }
