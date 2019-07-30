@@ -20,6 +20,7 @@ public class CourseDaoJdbcImplTest {
 
     private static final String COURSE_NAME_DEV = "maths";
     private static final String TEACHER_DEV = "Nosova";
+    private static final int NUMBER_OF_STUDENTS = 4;
     private static final String COURSE_NAME_NEW = "dance";
     private static final String TEACHER_NEW = "Liborets";
 
@@ -41,6 +42,7 @@ public class CourseDaoJdbcImplTest {
         assertTrue(course.getCourseId().equals(courseId));
         assertEquals(COURSE_NAME_DEV, course.getCourseName());
         assertEquals(TEACHER_DEV, course.getTeacher());
+        assertEquals(NUMBER_OF_STUDENTS, course.getNumberOfStudents());
     }
 
     @Test

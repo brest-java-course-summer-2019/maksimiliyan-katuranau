@@ -13,7 +13,7 @@ public class CourseMapper implements RowMapper<Course> {
     @Override
     public Course mapRow(ResultSet resultSet, int i) throws SQLException {
         Course course = new Course(resultSet.getInt("course_id"), resultSet.getString("course_name"),
-                resultSet.getDate("date"), resultSet.getString("teacher"));
+                resultSet.getDate("date"), resultSet.getString("teacher"), resultSet.getInt("studentCount"));
         return course;
     }
 }

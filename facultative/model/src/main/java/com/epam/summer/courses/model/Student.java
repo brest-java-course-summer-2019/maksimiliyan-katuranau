@@ -7,16 +7,19 @@ public class Student {
     private String firstName;
     private String lastName;
     private int age;
+    private int numberOfCourses;
     private List<Course> courseList;
 
     public Student() {
     }
 
-    public Student(Integer studentId, String firstName, String lastName, int age, List<Course> courseList) {
+    public Student(Integer studentId, String firstName, String lastName, int age, int numberOfCourses,
+                   List<Course> courseList) {
         this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+        this.numberOfCourses = numberOfCourses;
         this.courseList = courseList;
     }
 
@@ -60,6 +63,14 @@ public class Student {
         this.courseList = courseList;
     }
 
+    public int getNumberOfCourses() {
+        return numberOfCourses;
+    }
+
+    public void setNumberOfCourses(int numberOfCourses) {
+        this.numberOfCourses = numberOfCourses;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -67,6 +78,7 @@ public class Student {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
+                ", numberOfCourses=" + numberOfCourses +
                 ", courseList=" + courseList +
                 '}';
     }

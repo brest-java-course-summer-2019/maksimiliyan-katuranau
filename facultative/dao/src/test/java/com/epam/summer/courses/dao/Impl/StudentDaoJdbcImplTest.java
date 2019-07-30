@@ -47,7 +47,7 @@ public class StudentDaoJdbcImplTest {
         assertTrue(student.getStudentId().equals(studentId));
         assertEquals(STUDENT_FIRST_NAME_DEV, student.getFirstName());
         assertEquals(STUDENT_AGE_DEV, student.getAge());
-        assertEquals(NUMBER_OF_COURSES_DEV, student.getCourseList().size());
+        assertEquals(NUMBER_OF_COURSES_DEV, student.getNumberOfCourses());
     }
 
     @Test
@@ -78,7 +78,7 @@ public class StudentDaoJdbcImplTest {
         assertEquals(studentId, updatedStudent.getStudentId());
         assertEquals(STUDENT_FIRST_NAME_NEW, updatedStudent.getFirstName());
         assertEquals(STUDENT_AGE_NEW, updatedStudent.getAge());
-        assertEquals(NUMBER_OF_COURSES_NEW, updatedStudent.getCourseList().size());
+        assertEquals(NUMBER_OF_COURSES_NEW, updatedStudent.getNumberOfCourses());
     }
 
     @Test
