@@ -1,5 +1,6 @@
 package com.epam.summer.courses.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
@@ -11,6 +12,7 @@ public class Student {
     private List<Course> courseList;
 
     public Student() {
+        this.courseList = new ArrayList<>();
     }
 
     public Student(Integer studentId, String firstName, String lastName, int age, int numberOfCourses,
