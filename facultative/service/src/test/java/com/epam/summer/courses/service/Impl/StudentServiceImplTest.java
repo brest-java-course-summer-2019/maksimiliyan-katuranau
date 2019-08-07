@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -24,6 +25,9 @@ public class StudentServiceImplTest {
 
     @InjectMocks
     private StudentServiceImpl studentService;
+
+    @Captor
+    private ArgumentCaptor<Student> studentCaptor;
 
     @AfterEach
     void clearMock() {
@@ -64,9 +68,8 @@ public class StudentServiceImplTest {
     @Test
     void updateStudent() {
         studentService.updateStudent(create("Tanya"));
-        ArgumentCaptor<Student> captor = ArgumentCaptor.forClass(Student.class);
-        verify(studentDao).updateStudent(captor.capture());
-        Student student = captor.getValue();
+        verify(studentDao).updateStudent(studentCaptor.capture());
+        Student student = studentCaptor.getValue();
         assertNotNull(student);
         assertEquals("Tanya", student.getFirstName());
     }

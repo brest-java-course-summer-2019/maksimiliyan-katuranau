@@ -2,14 +2,12 @@ package com.epam.summer.courses.service.Impl;
 
 import com.epam.summer.courses.dao.CourseDao;
 import com.epam.summer.courses.model.Course;
+import com.epam.summer.courses.model.Student;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.commons.JUnitException;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
@@ -27,6 +25,9 @@ class CourseServiceImplTest {
 
     @InjectMocks
     private CourseServiceImpl courseService;
+
+    @Captor
+    private ArgumentCaptor<Course> courseCaptor;
 
     @AfterEach
     void clearMock() {
@@ -68,9 +69,8 @@ class CourseServiceImplTest {
     @Test
     void updateCourse() {
         courseService.updateCourse(create("dance"));
-        ArgumentCaptor<Course> captor = ArgumentCaptor.forClass(Course.class);
-        verify(courseDao).updateCourse(captor.capture());
-        Course course = captor.getValue();
+        verify(courseDao).updateCourse(courseCaptor.capture());
+        Course course = courseCaptor.getValue();
         assertNotNull(course);
         assertEquals("dance", course.getCourseName());
     }
