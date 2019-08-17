@@ -6,6 +6,7 @@ import com.epam.summer.courses.dao.mapper.StudentMapper;
 import com.epam.summer.courses.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+@PropertySource("classpath:sql-query.properties")
 public class StudentDaoJdbcImpl implements StudentDao {
 
     @Value("${list.students.get}")

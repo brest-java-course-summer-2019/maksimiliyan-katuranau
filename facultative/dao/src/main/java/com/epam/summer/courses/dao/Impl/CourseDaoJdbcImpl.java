@@ -5,6 +5,7 @@ import com.epam.summer.courses.dao.mapper.CourseMapper;
 import com.epam.summer.courses.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -21,6 +22,7 @@ import java.util.Optional;
  * The type Course dao jdbc.
  */
 @Repository
+@PropertySource("classpath:sql-query.properties")
 public class CourseDaoJdbcImpl implements CourseDao {
 
     @Value("${list.courses.get}")

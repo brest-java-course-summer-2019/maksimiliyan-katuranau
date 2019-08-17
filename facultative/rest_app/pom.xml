@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <parent>
-        <groupId>com.epam.summer.courses</groupId>
         <artifactId>facultative</artifactId>
+        <groupId>com.epam.summer.courses</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>web_app</artifactId>
+    <artifactId>rest_app</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.epam.summer.courses</groupId>
-            <artifactId>test_db</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.epam.summer.courses</groupId>
-            <artifactId>model</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.epam.summer.courses</groupId>
-            <artifactId>dao</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.epam.summer.courses</groupId>
             <artifactId>service</artifactId>
@@ -43,18 +33,26 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring5</artifactId>
-        </dependency>
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-        </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
@@ -68,22 +66,28 @@
             <artifactId>mockito-core</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
         </dependency>
     </dependencies>
 
     <build>
+
         <plugins>
+            <!-- Embedded Jetty HTTP Server for testing web application -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <configuration>
                     <httpConnector>
-                        <port>8080</port>
+                        <port>8088</port>
                     </httpConnector>
                     <stopKey>stop</stopKey>
-                    <stopPort>8880</stopPort>
+                    <stopPort>8888</stopPort>
                 </configuration>
             </plugin>
         </plugins>

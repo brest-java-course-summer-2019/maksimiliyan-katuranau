@@ -17,10 +17,10 @@
     <!-- Use @MVC annotations -->
     <mvc:annotation-driven/>
 
-    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/resources/**" location="/courses/"/>
 
     <!-- Component scan for @Controller, @Service... annotations -->
-    <context:component-scan base-package="com.epam.summer.courses.*"/>
+    <context:component-scan base-package="com.epam.summer.courses"/>
 
     <context:property-placeholder location="classpath:application.properties"/>
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -50,20 +50,23 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Dance</td>
-                <td>10 May 2019</td>
-                <td>Mikityuk M.I.</td>
-                <td>25</td>
+            <tr th:each="course : ${courses}">
+                <td th:text="${course.courseName}">Dance</td>
+                <td th:text="${course.date}">10 May 2019</td>
+                <td th:text="${course.teacher}">Mikityuk M.I.</td>
+                <td th:text="${course.numberOfStudents}">25</td>
                 <td class="text-right">
                     <a href="course"
+                       th:href="@{|/course/${course.courseId}|}"
                        class="btn-sm btn-outline-secondary"
                        title="Edit course"
                        data-toggle="tooltip"
                        data-placement="top">
                         <i class="fa fa-pencil"></i> <span
                             class="d-none d-md-inline">Edit</span></a>
-                    <span data-toggle="modal" data-target="#deleteDialog">
+                    <span data-toggle="modal"
+                          data-target="#deleteDialog"
+                          th:attr="data-id=${course.courseId},data-name=${course.courseName}">
                                 <a href="#" class="btn-sm btn-outline-secondary"
                                    title="delete course"
                                    data-toggle="tooltip"
@@ -72,7 +75,7 @@
                                 </span>
                 </td>
             </tr>
-            <tr>
+            <tr th:remove="all">
                 <td>Box</td>
                 <td>15 Jun 2019</td>
                 <td>Tarasov A.T.</td>
@@ -94,7 +97,7 @@
                                 </span>
                 </td>
             </tr>
-            <tr>
+            <tr th:remove="all">
                 <td>Sing</td>
                 <td>21 Jun 2019</td>
                 <td>Gagarina P.A.</td>
@@ -116,7 +119,7 @@
                                 </span>
                 </td>
             </tr>
-            <tr>
+            <tr th:remove="all">
                 <td>Art</td>
                 <td>22 May 2019</td>
                 <td>Krasko D.V.</td>
@@ -138,7 +141,7 @@
                                 </span>
                 </td>
             </tr>
-            <tr>
+            <tr th:remove="all">
                 <td>Race</td>
                 <td>2 Jun 2019</td>
                 <td>Moros A.V.</td>
@@ -186,7 +189,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <a id="deleteUrl" href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </div>
@@ -204,6 +207,11 @@
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
+    })
+    $('#deleteDialog').on('show.bs.modal', function (event) {
+        var target = $(event.relatedTarget)
+        $(this).find('.modal-body').text('Please confirm delete course: "' + target.data('name') + '"')
+        document.getElementById('deleteUrl').href = '/course/' + target.data('id') + '/delete';
     })
 </script>
 </body>
