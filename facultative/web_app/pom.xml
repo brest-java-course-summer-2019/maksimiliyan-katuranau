@@ -15,19 +15,11 @@
     <dependencies>
         <dependency>
             <groupId>com.epam.summer.courses</groupId>
-            <artifactId>test_db</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.epam.summer.courses</groupId>
             <artifactId>model</artifactId>
         </dependency>
         <dependency>
             <groupId>com.epam.summer.courses</groupId>
-            <artifactId>dao</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.epam.summer.courses</groupId>
-            <artifactId>service</artifactId>
+            <artifactId>service-api</artifactId>
         </dependency>
 
         <dependency>
@@ -53,6 +45,10 @@
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
         </dependency>
 
         <dependency>

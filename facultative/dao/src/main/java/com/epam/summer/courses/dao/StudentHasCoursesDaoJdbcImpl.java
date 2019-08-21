@@ -1,6 +1,5 @@
-package com.epam.summer.courses.dao.Impl;
+package com.epam.summer.courses.dao;
 
-import com.epam.summer.courses.dao.StudentHasCoursesDao;
 import com.epam.summer.courses.dao.mapper.CourseMapper;
 import com.epam.summer.courses.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;

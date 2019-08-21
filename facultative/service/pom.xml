@@ -22,6 +22,10 @@
         </dependency>
         <dependency>
             <groupId>com.epam.summer.courses</groupId>
+            <artifactId>service-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.summer.courses</groupId>
             <artifactId>test_db</artifactId>
         </dependency>
         <dependency>

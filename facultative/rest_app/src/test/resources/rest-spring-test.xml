@@ -10,8 +10,12 @@
 
     <context:component-scan base-package="com.epam.summer.courses.rest_app"/>
 
-    <bean id="studentService" class="org.mockito.Mockito" factory-method="mock">
+    <bean id="courseService" class="org.mockito.Mockito" factory-method="mock">
         <constructor-arg value="com.epam.summer.courses.service.CourseService"/>
+    </bean>
+
+    <bean id="studentService" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.epam.summer.courses.service.StudentService"/>
     </bean>
 
 </beans>

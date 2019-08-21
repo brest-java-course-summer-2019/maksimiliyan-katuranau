@@ -2,11 +2,10 @@ package com.epam.summer.courses.service.Impl;
 
 import com.epam.summer.courses.dao.CourseDao;
 import com.epam.summer.courses.model.Course;
-import com.epam.summer.courses.model.Student;
+import com.epam.summer.courses.service.CourseServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.commons.JUnitException;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 

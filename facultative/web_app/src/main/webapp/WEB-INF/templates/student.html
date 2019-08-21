@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,20 +11,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
     <title>Edit Employee</title>
 </head>
-<body>
+<body onload="setCourses()">
 
 <header>
     <nav id="main-header"
          class="py-1 mb-3 navbar navbar-expand-sm navbar-light bg-light text-dark">
         <ul class="navbar-nav float-lg-left">
-            <li class="nav-item"><a href="students"
+            <li class="nav-item"><a href="/students"
                                     class="nav-item nav-link"
                                     title="Back to list"
                                     data-toggle="tooltip"
                                     data-placement="bottom">STUDENTS</a></li>
         </ul>
+        <span class="navbar-brand text-uppercase m-auto"
+              th:text="${isNew} ? 'New student' : 'Edit student'">Edit student</span>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="students"
+            <li class="nav-item"><a href="/students"
+                                    th:onclick="@{document.forms['studentForm'].submit(); return false;}"
                                     class="btn btn-light"
                                     title="Save student"
                                     data-toggle="tooltip"
@@ -40,40 +43,51 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        <form id="studentForm"
+                              th:object="${student}"
+                              action="students.html"
+                              th:action="@{${#httpServletRequest.servletPath}}"
+                              th:method="@{post}">
+
+                            <input id="field_studentId"
+                                   type="hidden"
+                                   th:field="*{studentId}"/>
+
                             <div class="form-group">
                                 <label class="form-control-label"
                                        for="field_student_first_name">First name</label>
                                 <input class="form-control"
                                        id="field_student_first_name"
-                                       type="text"
-                                       value="Philip"/>
+                                       type="text" value="Philip"
+                                       th:field="*{firstName}"/>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label"
                                        for="field_student_last_name">Last name</label>
                                 <input class="form-control"
                                        id="field_student_last_name"
-                                       type="text"
-                                       value="Kontsevich"/>
+                                       type="text" value="Kontsevich"
+                                       th:field="*{lastName}"/>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label"
                                        for="field_age">Age</label>
                                 <input class="form-control"
                                        id="field_age"
-                                       type="text"
-                                       value="19"/>
+                                       type="text" value="19"
+                                       th:field="*{age}"/>
                             </div>
+
                             <div class="form-group">
                                 <label class="form-control-label"
                                        for="field_courses">Courses</label><br>
-                                <select class="selectpicker" id="field_courses" multiple data-live-search="true">
-                                    <option value="1">Dance</option>
-                                    <option value="2" selected>Box</option>
-                                    <option value="3" selected>Sing</option>
-                                    <option value="4">Art</option>
-                                    <option value="5" selected>Race</option>
+                                <select class="selectpicker" id="field_courses" name="coursesList" multiple>
+                                    <option th:each="course : ${courses}" th:value="${course.courseId}"
+                                            th:text="${course.courseName}" th:id="${course.courseName}">Dance</option>
+                                    <option th:remove="tag" value="2" selected>Box</option>
+                                    <option th:remove="tag" value="3" selected>Sing</option>
+                                    <option th:remove="tag" value="4">Art</option>
+                                    <option th:remove="tag" value="5" selected>Race</option>
                                 </select>
                             </div>
                         </form>
@@ -92,6 +106,7 @@
 <script>
     $('select').selectpicker();
 </script>
+
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()

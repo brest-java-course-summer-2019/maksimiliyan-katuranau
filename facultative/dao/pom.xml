@@ -20,6 +20,10 @@
         </dependency>
         <dependency>
             <groupId>com.epam.summer.courses</groupId>
+            <artifactId>dao-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.summer.courses</groupId>
             <artifactId>test_db</artifactId>
         </dependency>
         <dependency>

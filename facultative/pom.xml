@@ -19,6 +19,8 @@
         <module>test_db</module>
         <module>web_app</module>
         <module>rest_app</module>
+        <module>service-api</module>
+        <module>dao-api</module>
     </modules>
 
     <distributionManagement>
@@ -62,7 +64,7 @@
         <h2.version>1.4.199</h2.version>
         <slf4j-api.version>1.7.25</slf4j-api.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
-        <jackson-databind.version>2.9.8</jackson-databind.version>
+        <jackson-databind.version>2.10.0.pr1</jackson-databind.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
     </properties>
 
@@ -80,7 +82,17 @@
             </dependency>
             <dependency>
                 <groupId>com.epam.summer.courses</groupId>
+                <artifactId>dao-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.epam.summer.courses</groupId>
                 <artifactId>service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.epam.summer.courses</groupId>
+                <artifactId>service-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

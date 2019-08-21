@@ -52,7 +52,7 @@
             <tbody>
             <tr th:each="course : ${courses}">
                 <td th:text="${course.courseName}">Dance</td>
-                <td th:text="${course.date}">10 May 2019</td>
+                <td th:text="${#dates.format(course.date, 'dd-MM-yyyy')}">10-05-2019</td>
                 <td th:text="${course.teacher}">Mikityuk M.I.</td>
                 <td th:text="${course.numberOfStudents}">25</td>
                 <td class="text-right">

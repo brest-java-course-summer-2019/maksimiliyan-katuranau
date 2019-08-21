@@ -24,10 +24,22 @@
 
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <import resource="classpath*:test-db.xml"/>
+    <bean id="departmentService" class="com.epam.summer.courses.web_app.consumers.CourseRestConsumer">
+        <constructor-arg index="0" value="${protocol}://${host}:${port}/${point.courses}"/>
+        <constructor-arg index="1" ref="restTemplate"/>
+    </bean>
 
-    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-        <constructor-arg name="dataSource" ref="dataSource"/>
+    <bean id="studentService" class="com.epam.summer.courses.web_app.consumers.StudentRestConsumer">
+        <constructor-arg index="0" value="${protocol}://${host}:${port}/${point.students}"/>
+        <constructor-arg index="1" ref="restTemplate"/>
+    </bean>
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+            </list>
+        </property>
     </bean>
 
     <!-- Thymeleaf Template Resolver -->

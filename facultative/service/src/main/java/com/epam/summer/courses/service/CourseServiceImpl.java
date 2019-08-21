@@ -1,8 +1,7 @@
-package com.epam.summer.courses.service.Impl;
+package com.epam.summer.courses.service;
 
 import com.epam.summer.courses.dao.CourseDao;
 import com.epam.summer.courses.model.Course;
-import com.epam.summer.courses.service.CourseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

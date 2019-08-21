@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -50,20 +50,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Philip</td>
-                <td>Kotsevich</td>
-                <td>19</td>
-                <td>2</td>
+            <tr th:each="student: ${students}">
+                <td th:text="${student.firstName}">Philip</td>
+                <td th:text="${student.lastName}">Kotsevich</td>
+                <td th:text="${student.age}">19</td>
+                <td th:text="${student.numberOfCourses}">2</td>
                 <td class="text-right">
                     <a href="student"
+                       th:href="@{|/student/${student.studentId}|}"
                        class="btn-sm btn-outline-secondary"
                        title="Edit student"
                        data-toggle="tooltip"
                        data-placement="top">
                         <i class="fa fa-pencil"></i> <span
                             class="d-none d-md-inline">Edit</span></a>
-                    <span data-toggle="modal" data-target="#deleteDialog">
+                    <span data-toggle="modal"
+                          data-target="#deleteDialog"
+                          th:attr="data-id=${student.studentId},data-firstname=${student.firstName},data-lastname=${student.lastName}">
+<!--                          th:attr="data-id=${student.studentId},data-firstName=${student.firstName},data-lastName=${student.lastName}">-->
                                 <a href="#" class="btn-sm btn-outline-secondary"
                                    title="Delete student"
                                    data-toggle="tooltip"
@@ -72,7 +76,7 @@
                                 </span>
                 </td>
             </tr>
-            <tr>
+            <tr th:remove="all">
                 <td>Roma</td>
                 <td>Kravets</td>
                 <td>20</td>
@@ -94,7 +98,7 @@
                                 </span>
                 </td>
             </tr>
-            <tr>
+            <tr th:remove="all">
                 <td>Tima</td>
                 <td>Salonikov</td>
                 <td>17</td>
@@ -116,7 +120,7 @@
                                 </span>
                 </td>
             </tr>
-            <tr>
+            <tr th:remove="all">
                 <td>Alex</td>
                 <td>Shliger</td>
                 <td>18</td>
@@ -163,7 +167,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <a id="deleteUrl" href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </div>
@@ -181,6 +185,12 @@
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
+    })
+    $('#deleteDialog').on('show.bs.modal', function (event) {
+        var target = $(event.relatedTarget)
+        $(this).find('.modal-body').text('Please confirm delete student: "' + target.data('firstname')
+            + ' ' + target.data('lastname') + '"')
+        document.getElementById('deleteUrl').href = '/student/' + target.data('id') + '/delete';
     })
 </script>
 </body>

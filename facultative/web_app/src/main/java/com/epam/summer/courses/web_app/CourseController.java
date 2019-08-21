@@ -36,7 +36,7 @@ public class CourseController {
      * @return view name
      */
     @GetMapping(value = "/courses")
-    public final String departments(Model model) {
+    public final String courses(Model model) {
         LOGGER.debug("get list courses ({})", model);
         model.addAttribute("courses", courseService.getCoursesList());
         return "courses";

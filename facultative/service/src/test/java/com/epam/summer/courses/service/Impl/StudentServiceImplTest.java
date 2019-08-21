@@ -2,6 +2,7 @@ package com.epam.summer.courses.service.Impl;
 
 import com.epam.summer.courses.dao.StudentDao;
 import com.epam.summer.courses.model.Student;
+import com.epam.summer.courses.service.StudentServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
