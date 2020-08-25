@@ -17,5 +17,4 @@
     <bean id="studentService" class="org.mockito.Mockito" factory-method="mock">
         <constructor-arg value="com.epam.summer.courses.service.StudentService"/>
     </bean>
-
 </beans>

@@ -1,4 +1,4 @@
-package com.epam.summer.courses.web_app.consumers;
+package com.epam.summer.courses.web_app.client;
 
 import com.epam.summer.courses.model.Course;
 import com.epam.summer.courses.service.CourseService;
@@ -9,14 +9,14 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-public class CourseRestConsumer  implements CourseService {
+public class CourseRestClient implements CourseService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CourseRestConsumer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CourseRestClient.class);
 
     private String url;
     private RestTemplate restTemplate;
 
-    public CourseRestConsumer(String url, RestTemplate restTemplate) {
+    public CourseRestClient(String url, RestTemplate restTemplate) {
         this.url = url;
         this.restTemplate = restTemplate;
     }

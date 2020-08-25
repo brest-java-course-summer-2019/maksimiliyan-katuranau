@@ -1,0 +1,164 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://courses.summer.epam.com/soap_app/schemas"
+           xmlns:hr="http://courses.summer.epam.com/soap_app/schemas">
+
+<!--    Course requests-->
+    <xs:element name="GetAllCoursesRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="GetAllCoursesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="courses" type="hr:CourseType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetCourseByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetCourseByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="course" type="hr:CourseType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AddCourseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="course" type="hr:CourseType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AddCourseResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="course" type="hr:CourseType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UpdateCourseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="course" type="hr:CourseType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UpdateCourseResponse">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="DeleteCourseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteCourseResponse">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:complexType name="CourseType">
+        <xs:sequence>
+            <xs:element name="courseId" type="xs:int" minOccurs="0"/>
+            <xs:element name="courseName" type="xs:string"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="teacher" type="xs:string"/>
+            <xs:element name="numberOfStudents" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--    Student requests-->
+    <xs:element name="GetAllStudentsRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="GetAllStudentsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="students" type="hr:StudentType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetStudentByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetStudentByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="student" type="hr:StudentType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AddStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="student" type="hr:StudentType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AddStudentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="student" type="hr:StudentType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UpdateStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="student" type="hr:StudentType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UpdateStudentResponse">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="DeleteStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteStudentResponse">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:complexType name="StudentType">
+        <xs:sequence>
+            <xs:element name="studentId" type="xs:int" minOccurs="0"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="age" type="xs:int"/>
+            <xs:element name="numberOfCourses" type="xs:int"/>
+            <xs:element name="courseList" type="hr:CourseType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

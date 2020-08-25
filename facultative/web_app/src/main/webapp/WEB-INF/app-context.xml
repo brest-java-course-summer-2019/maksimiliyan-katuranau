@@ -17,60 +17,80 @@
     <!-- Use @MVC annotations -->
     <mvc:annotation-driven/>
 
-    <mvc:resources mapping="/resources/**" location="/resources/"/>
-
     <!-- Component scan for @Controller, @Service... annotations -->
     <context:component-scan base-package="com.epam.summer.courses.*"/>
 
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <bean id="departmentService" class="com.epam.summer.courses.web_app.consumers.CourseRestConsumer">
-        <constructor-arg index="0" value="${protocol}://${host}:${port}/${point.courses}"/>
-        <constructor-arg index="1" ref="restTemplate"/>
-    </bean>
+    <beans profile="!soap">
+        <bean id="courseRestClient" class="com.epam.summer.courses.web_app.client.CourseRestClient">
+            <constructor-arg index="0" value="${protocol}://${host}:${port}/${point.courses}"/>
+            <constructor-arg index="1" ref="restTemplate"/>
+        </bean>
 
-    <bean id="studentService" class="com.epam.summer.courses.web_app.consumers.StudentRestConsumer">
-        <constructor-arg index="0" value="${protocol}://${host}:${port}/${point.students}"/>
-        <constructor-arg index="1" ref="restTemplate"/>
-    </bean>
+        <bean id="studentRestClient" class="com.epam.summer.courses.web_app.client.StudentRestClient">
+            <constructor-arg index="0" value="${protocol}://${host}:${port}/${point.students}"/>
+            <constructor-arg index="1" ref="restTemplate"/>
+        </bean>
 
-    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
-        <property name="messageConverters">
-            <list>
-                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-            </list>
-        </property>
-    </bean>
+        <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+            <property name="messageConverters">
+                <list>
+                    <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+                </list>
+            </property>
+        </bean>
+    </beans>
 
-    <!-- Thymeleaf Template Resolver -->
-    <bean id="templateResolver"
-          class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
-        <property name="prefix" value="/WEB-INF/templates/" />
-        <property name="suffix" value=".html" />
-        <property name="templateMode" value="HTML" />
-        <!-- Template cache is true by default. Set to false if you want             -->
-        <!-- templates to be automatically updated when modified.                    -->
-        <property name="cacheable" value="false" />
-    </bean>
+    <beans profile="soap">
+        <bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+            <property name="contextPath" value="com.epam.summer.courses.soap_app.schemas"/>
+        </bean>
 
-    <!-- Thymeleaf Template Engine (Spring5-specific version) -->
-    <bean id="templateEngine"
-          class="org.thymeleaf.spring5.SpringTemplateEngine">
-        <property name="templateResolvers">
-            <set>
-                <ref bean="templateResolver" />
-            </set>
-        </property>
-    </bean>
+        <bean id="studentSoapClient" class="com.epam.summer.courses.web_app.client.StudentSoapClient">
+            <property name="defaultUri" value="${protocol}://${host}:${port}/${soap.default.uri.point}"/>
+            <property name="marshaller" ref="marshaller"/>
+            <property name="unmarshaller" ref="marshaller"/>
+        </bean>
 
-    <!-- Thymeleaf View Resolver - implementation of Spring's ViewResolver interface -->
-    <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
-        <property name="templateEngine" ref="templateEngine" />
-        <property name="characterEncoding" value="UTF-8" />
-    </bean>
+        <bean id="courseSoapClient" class="com.epam.summer.courses.web_app.client.CourseSoapClient">
+            <property name="defaultUri" value="${protocol}://${host}:${port}/${soap.default.uri.point}"/>
+            <property name="marshaller" ref="marshaller"/>
+            <property name="unmarshaller" ref="marshaller"/>
+        </bean>
+    </beans>
 
-    <bean id="messageSource"
-          class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-          p:basename="/WEB-INF/messages">
-    </bean>
+    <beans>
+        <!-- Thymeleaf Template Resolver -->
+        <bean id="templateResolver"
+              class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+            <property name="prefix" value="/WEB-INF/templates/" />
+            <property name="suffix" value=".html" />
+            <property name="templateMode" value="HTML" />
+            <!-- Template cache is true by default. Set to false if you want             -->
+            <!-- templates to be automatically updated when modified.                    -->
+            <property name="cacheable" value="false" />
+        </bean>
+
+        <!-- Thymeleaf Template Engine (Spring5-specific version) -->
+        <bean id="templateEngine"
+              class="org.thymeleaf.spring5.SpringTemplateEngine">
+            <property name="templateResolvers">
+                <set>
+                    <ref bean="templateResolver" />
+                </set>
+            </property>
+        </bean>
+
+        <!-- Thymeleaf View Resolver - implementation of Spring's ViewResolver interface -->
+        <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+            <property name="templateEngine" ref="templateEngine" />
+            <property name="characterEncoding" value="UTF-8" />
+        </bean>
+
+        <bean id="messageSource"
+              class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+              p:basename="/WEB-INF/messages">
+        </bean>
+    </beans>
 </beans>

@@ -18,7 +18,9 @@
   ### Server test
   
   For server test jetty plugin can be used
-  
-      mvn jetty:run 
+  #####run with REST: 
+  > mvn jetty:run
+  #####run with SOAP 
+  > mvn jetty:run -Psoap
       
   Open [http://localhost:8080](http://localhost:8080/hello)

@@ -17,19 +17,17 @@
     <!-- Use @MVC annotations -->
     <mvc:annotation-driven/>
 
-    <mvc:resources mapping="/resources/**" location="/courses/"/>
-
     <!-- Component scan for @Controller, @Service... annotations -->
     <context:component-scan base-package="com.epam.summer.courses"/>
 
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <bean id="departmentService" class="com.epam.summer.courses.web_app.consumers.CourseRestConsumer">
+    <bean id="departmentService" class="com.epam.summer.courses.web_app.client.CourseRestClient">
         <constructor-arg index="0" value="${protocol}://${host}:${port}/${point.courses}"/>
         <constructor-arg index="1" ref="restTemplate"/>
     </bean>
 
-    <bean id="studentService" class="com.epam.summer.courses.web_app.consumers.StudentRestConsumer">
+    <bean id="studentService" class="com.epam.summer.courses.web_app.client.StudentRestClient">
         <constructor-arg index="0" value="${protocol}://${host}:${port}/${point.students}"/>
         <constructor-arg index="1" ref="restTemplate"/>
     </bean>

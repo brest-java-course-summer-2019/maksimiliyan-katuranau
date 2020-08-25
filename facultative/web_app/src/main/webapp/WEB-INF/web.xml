@@ -5,6 +5,11 @@
   </listener>
 
   <context-param>
+    <param-name>spring.profiles.active</param-name>
+    <param-value>${spring.profile}</param-value>
+  </context-param>
+
+  <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/app-context.xml</param-value>
   </context-param>

@@ -25,14 +25,6 @@
             <artifactId>spring-context</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
@@ -73,12 +65,15 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.epam.summer.courses</groupId>
+            <artifactId>soap</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
-
         <plugins>
-            <!-- Embedded Jetty HTTP Server for testing web application -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -88,8 +83,27 @@
                     </httpConnector>
                     <stopKey>stop</stopKey>
                     <stopPort>8888</stopPort>
+                    <webXml>${webXmlFile}</webXml>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>rest</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <webXmlFile>src/main/webapp/WEB-INF/web.xml</webXmlFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>soap</id>
+            <properties>
+                <webXmlFile>src/main/webapp/WEB-INF/soap-web.xml</webXmlFile>
+            </properties>
+        </profile>
+    </profiles>
 </project>

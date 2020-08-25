@@ -17,6 +17,7 @@
         <module>dao</module>
         <module>service</module>
         <module>test_db</module>
+        <module>soap</module>
         <module>web_app</module>
         <module>rest_app</module>
         <module>service-api</module>
@@ -239,6 +240,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <forkCount>3</forkCount>
+                        <reuseForks>true</reuseForks>
+                        <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    </configuration>
                     <dependencies>
                         <dependency>
                             <groupId>org.ow2.asm</groupId>
