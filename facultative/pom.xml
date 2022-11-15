@@ -64,7 +64,7 @@
         <h2.version>1.4.199</h2.version>
         <slf4j-api.version>1.7.25</slf4j-api.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
-        <jackson-databind.version>2.10.0.pr1</jackson-databind.version>
+        <jackson-databind.version>2.12.7.1</jackson-databind.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
     </properties>
 
